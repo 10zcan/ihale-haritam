@@ -1,1 +1,57 @@
-[]
+[
+  {
+    "city": "Malatya",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Malatya İçme Suyu ve Atıksu İhalesi Başladı - HaberGo",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Malatya&#x27;da içme suyu, atıksu ve yağmursuyu şebekeleri için İller Bankası AŞ ihale sürecini başlattı. Detaylar ve proje kapsamı haberimizde....",
+    "date": "16.11.2026",
+    "added": "2026-11-16"
+  },
+  {
+    "city": "Isparta",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Kumdanlı&#x27;ya içme suyu altyapı ihalesi müjdesi | ÖZYALVAÇ",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Kumdanlı&#x27;ya içme suyu altyapı ihalesi müjdesi İlçemize bağlı Kumdanlı Köyü&#x27;nün uzun yıllar hizmet verecek içme suyu altyapısına kavuşması için önemli bir yatırım hayata geçiriliyor. Isparta İl Özel İdaresi tarafından köyde yapılac...",
+    "date": "16.11.2026",
+    "added": "2026-11-16"
+  },
+  {
+    "city": "Konya",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "2026 Yili Taşra İlçeler Kanali̇zasyon Yapim Ve Islahi İşi̇",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "2026 YILI TAŞRA İLÇELER KANALİZASYON YAPIM VE ISLAHI İŞİ · Konya Su ve Kanalizasyon İdaresi · KONYA. İhale tarihi 11.06.2026. Yaklaşık maliyet, teklifler ve şartnameler....",
+    "date": "16.11.2026",
+    "added": "2026-11-16"
+  },
+  {
+    "city": "Kırşehir",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Su ve Kanalizasyon Altyapısı Yapım İşi — Kırşehir ihalesi",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Su ve Kanalizasyon Altyapısı Yapım İşi. Kırşehir Belediye Başkanlığı Su ve Kanalizasyon Müdürlüğü · Kırşehir · Yapım işi. Son teklif: 10.09.2026. EKAP ihale ilanı özeti ve detayları....",
+    "date": "16.11.2026",
+    "added": "2026-11-16"
+  },
+  {
+    "city": "Trabzon",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "TİSKİ&#x27;den Kanalizasyon hattı inşaat yapım işi ihalesi",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "⤢ TİSKİ&#x27;den Kanalizasyon hattı inşaat yapım işi ihalesi Trabzon İli Çaykara İlçesi Ulucami Mahallesi Kanalizasyon Şebeke Hattı İnşaatı Yapım İşi yapım işi 4734 sayılı Kamu İhale Kanununun 19 uncu maddesine göre açık ihale usulü ile iha...",
+    "date": "16.11.2026",
+    "added": "2026-11-16"
+  }
+]
