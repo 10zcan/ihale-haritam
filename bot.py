@@ -13,10 +13,10 @@ ILLER = [
 ]
 
 SORGULAR = [
-    '"kanalizasyon" OR "içme suyu" "yapım işi" ihale',
-    '"doğalgaz" OR "elektrik" "altyapı" kazı ihale',
-    '"dere ıslahı" OR "hafriyat" "yapım işi" ihale',
-    '"yol yapım" OR "stabilize" OR "üstyapı" ihale ilanı'
+    "kanalizasyon yapım işi ihale",
+    "içme suyu altyapı yapım ihalesi",
+    "doğalgaz elektrik altyapı kazı ihale",
+    "dere ıslahı hafriyat yol yapım ihalesi"
 ]
 
 try:
@@ -36,7 +36,7 @@ for m in mevcut:
 
 for q in SORGULAR:
     encoded = urllib.parse.quote(q)
-    url = f"https://google.com{encoded}&hl=tr&gl=TR&ceid=TR:tr"
+    url = "https://google.com" + encoded + "&hl=tr&gl=TR&ceid=TR:tr"
     req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
     try:
         xml_data = urllib.request.urlopen(req, timeout=20).read()
@@ -54,9 +54,9 @@ for q in SORGULAR:
                     break
             if not bulunan_il:
                 continue
-
-            temiz_baslik = baslik.split(" - ")[:115]
-            kaynak = baslik.split(" - ")[-1] if " - " in baslik else "EKAP / Kamu İhale"
+            temiz_baslik = baslik[:115]
+            kaynak = "EKAP / Kamu İhale"
+            
 
             if not any(x["title"] == temiz_baslik for x in mevcut):
                 mevcut.insert(0, {
@@ -71,7 +71,8 @@ for q in SORGULAR:
                     "added": bugun.strftime("%Y-%m-%d")
                 })
     except Exception as e:
-        print("Sorgu hatası:", e)
+        print("Sorgu hatasi:", e)
 
 with open("ihaleler.json", "w", encoding="utf-8") as f:
     json.dump(mevcut[:400], f, ensure_ascii=False, indent=2)
+                
