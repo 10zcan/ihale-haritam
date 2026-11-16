@@ -13,10 +13,10 @@ ILLER = [
 ]
 
 SORGULAR = [
-    "kanalizasyon yapım işi ihale",
-    "içme suyu altyapı yapım ihalesi",
-    "doğalgaz elektrik altyapı kazı ihale",
-    "dere ıslahı hafriyat yol yapım ihalesi"
+    "kanalizasyon yapim isi ihalesi",
+    "icme suyu altyapi yapim ihalesi",
+    "dogalgaz elektrik altyapi kazi ihale",
+    "dere islahi hafriyat yol yapim ihalesi"
 ]
 
 try:
@@ -34,22 +34,22 @@ for m in mevcut:
     except:
         pass
 
-kaynak_urller = []
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 13; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.36',
+    'Accept-Language': 'tr-TR,tr;q=0.9'
+}
+
 for q in SORGULAR:
     enc = urllib.parse.quote(q)
-    kaynak_urller.append("https://bing.com" + enc + "&format=rss&mkt=tr-TR")
-    kaynak_urller.append("https://google.com" + enc + "&hl=tr&gl=TR&ceid=TR:tr")
-
-for url in kaynak_urller:
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+    url = "https://html.duckduckgo.com/html/?q=" + enc
+    req = urllib.request.Request(url, headers=headers)
     try:
-        xml_data = urllib.request.urlopen(req, timeout=20).read()
-        root = ET.fromstring(xml_data)
-        for item in root.findall(".//item")[:20]:
-            baslik = item.find("title").text or ""
-            aciklama = re.sub('<[^<]+?>', '', item.find("description").text or "")
-            pub = item.find("pubDate").text or ""
-            metin = (baslik + " " + aciklama).lower()
+        html = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", errors="ignore")
+        sonuclar = re.findall(r'class="result__a"[^>]*>(.*?)</a>.*?class="result__snippet"[^>]*>(.*?)</a>', html, re.S)
+        for raw_baslik, raw_ozet in sonuclar[:15]:
+            baslik = re.sub('<[^<]+?>', '', raw_baslik).strip()
+            ozet = re.sub('<[^<]+?>', '', raw_ozet).strip()
+            metin = (baslik + " " + ozet).lower()
 
             bulunan_il = None
             for il in ILLER:
@@ -67,13 +67,14 @@ for url in kaynak_urller:
                     "type": "Yapım",
                     "status": "active",
                     "title": temiz_baslik,
-                    "org": "EKAP / Resmi İhale Bülteni",
-                    "desc": aciklama[:240] + "...",
-                    "date": pub[:16],
+                    "org": "EKAP / Kamu İhale Duyurusu",
+                    "desc": ozet[:240] + "...",
+                    "date": bugun.strftime("%d.%m.%Y"),
                     "added": bugun.strftime("%Y-%m-%d")
                 })
     except Exception as e:
-        print("Kaynak atlandi:", e)
+        print("Arama hatasi:", e)
 
+print("Toplam kayit:", len(mevcut))
 with open("ihaleler.json", "w", encoding="utf-8") as f:
     json.dump(mevcut[:400], f, ensure_ascii=False, indent=2)
