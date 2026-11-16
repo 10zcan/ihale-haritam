@@ -34,14 +34,18 @@ for m in mevcut:
     except:
         pass
 
+kaynak_urller = []
 for q in SORGULAR:
-    encoded = urllib.parse.quote(q)
-    url = "https://google.com" + encoded + "&hl=tr&gl=TR&ceid=TR:tr"
-    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    enc = urllib.parse.quote(q)
+    kaynak_urller.append("https://bing.com" + enc + "&format=rss&mkt=tr-TR")
+    kaynak_urller.append("https://google.com" + enc + "&hl=tr&gl=TR&ceid=TR:tr")
+
+for url in kaynak_urller:
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
     try:
         xml_data = urllib.request.urlopen(req, timeout=20).read()
         root = ET.fromstring(xml_data)
-        for item in root.findall(".//item")[:25]:
+        for item in root.findall(".//item")[:20]:
             baslik = item.find("title").text or ""
             aciklama = re.sub('<[^<]+?>', '', item.find("description").text or "")
             pub = item.find("pubDate").text or ""
@@ -54,10 +58,8 @@ for q in SORGULAR:
                     break
             if not bulunan_il:
                 continue
-            temiz_baslik = baslik[:115]
-            kaynak = "EKAP / Kamu İhale"
-            
 
+            temiz_baslik = baslik[:115]
             if not any(x["title"] == temiz_baslik for x in mevcut):
                 mevcut.insert(0, {
                     "city": bulunan_il,
@@ -65,14 +67,13 @@ for q in SORGULAR:
                     "type": "Yapım",
                     "status": "active",
                     "title": temiz_baslik,
-                    "org": kaynak,
+                    "org": "EKAP / Resmi İhale Bülteni",
                     "desc": aciklama[:240] + "...",
                     "date": pub[:16],
                     "added": bugun.strftime("%Y-%m-%d")
                 })
     except Exception as e:
-        print("Sorgu hatasi:", e)
+        print("Kaynak atlandi:", e)
 
 with open("ihaleler.json", "w", encoding="utf-8") as f:
     json.dump(mevcut[:400], f, ensure_ascii=False, indent=2)
-                
