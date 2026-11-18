@@ -1,5 +1,49 @@
 [
   {
+    "city": "Osmaniye",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Osmaniye Düziçi OSB&#x27;ye elektrik ve doğalgaz şebekesi",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Enerji Günlüğü - Osmaniye Düziçi Karma Organize Sanayi Bölgesi altyapı yapım işi ihaleye çıktı. İşin kapsamında elektrik, doğalgaz ve atıksu şebekeleri de bulunuyor. İhale 20 Ekim 2026 tarihinde saat 10.00&#x27;da yapılacak....",
+    "date": "18.11.2026",
+    "added": "2026-11-18"
+  },
+  {
+    "city": "Şanlıurfa",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Genişleme Alanı (30 ha Alanda) Alt Yapı (Atık Su, Yağmur Suyu ve İçme ...",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "İSTEKLİLERE DUYURULUR! Şanlıurfa Organize Sanayi Bölgesi &quot;Genişleme Alanı (30 ha Alanda) Alt Yapı (Atık Su, Yağmur Suyu ve İçme Suyu) Yapım İşi&quot; İhalesi yapılacaktır. İhale evrakları Bölge Müdürülüğün&#x27;den temin edilecektir. T...",
+    "date": "18.11.2026",
+    "added": "2026-11-18"
+  },
+  {
+    "city": "Kırşehir",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "İçme Suyu Kuyusu Yapım İşi — Kırşehir ihalesi",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "İçme Suyu Kuyusu Yapım İşi. Kırşehir Belediye Başkanlığı Su ve Kanalizasyon Müdürlüğü · Kırşehir · Yapım işi. Son teklif: 22.09.2026. EKAP ihale ilanı özeti ve detayları....",
+    "date": "18.11.2026",
+    "added": "2026-11-18"
+  },
+  {
+    "city": "Manisa",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Maski̇ Kanali̇zasyon Dai̇resi̇ Başkanliği - Mani̇sa İli̇ Alaşehi̇r İlçesi̇ ...",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "MASKİ KANALİZASYON DAİRESİ BAŞKANLIĞI - MANİSA İLİ ALAŞEHİR İLÇESİ MUHTELİF MAHALLERDE KANALİZASYON HATTI YAPIM İŞİ Manisa İli Alaşehir İlçesi Muhtelif Mahallerde Kanalizasyon Hattı Yapım İşi yapım işi 4734 sayılı Kamu İhale Kanununun 19 un...",
+    "date": "18.11.2026",
+    "added": "2026-11-18"
+  },
+  {
     "city": "Kırşehir",
     "district": "Merkez",
     "type": "Yapım",
