@@ -63,7 +63,7 @@ select,input,textarea{width:100%;padding:9px;border-radius:8px;background:#0f172
 <button class="bbulk" onclick="saveBulk()">Hepsini Haritaya Aktar</button>
 </div>
 </div></div>
-  <script>
+<script>
 const C=[
 {p:"01",n:"Adana",x:535,y:325,d:"Seyhan,Ceyhan,Kozan"},{p:"02",n:"Adıyaman",x:675,y:295,d:"Merkez,Kahta"},{p:"03",n:"Afyon",x:265,y:235,d:"Merkez,Sandıklı"},
 {p:"04",n:"Ağrı",x:885,y:165,d:"Merkez,Doğubayazıt"},{p:"05",n:"Amasya",x:545,y:125,d:"Merkez,Merzifon,Suluova"},{p:"06",n:"Ankara",x:385,y:175,d:"Çankaya,Sincan,Polatlı"},
@@ -162,4 +162,6 @@ render();closeM();openD(city);['idst','itl','ior','idc','idt'].forEach(x=>docume
 }
 function saveBulk(){
 const lines=document.getElementById('bulkTxt').value.split('\n').map(x=>x.trim()).filter(Boolean);
+if(!lines.length){alert("Lütfen listeyi yapıştırın.");return}
+const local=JSON.parse(localStorage.getItem('myTendersV2'))||[];
     
