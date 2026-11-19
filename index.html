@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=3,user-scalable=yes">
-<title>İhale Haritam</title>
+<title>Türkiye İş Makinesi İhale Haritası</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
 body{background:#0b1120;color:#f8fafc;height:100vh;display:flex;flex-direction:column;overflow:hidden}
@@ -39,20 +39,31 @@ select,input,textarea{width:100%;padding:9px;border-radius:8px;background:#0f172
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:3000;padding:14px;align-items:center;justify-content:center}
 .modal.open{display:flex}
 .mbox{background:#1e293b;width:100%;max-width:420px;border-radius:16px;padding:16px;border:1px solid #475569;max-height:90vh;overflow-y:auto}
-.bsave{width:100%;background:#22c55e;color:#0f172a;border:none;padding:11px;border-radius:8px;font-weight:700;font-size:14px}
+.bsave{width:100%;background:#22c55e;color:#0f172a;border:none;padding:11px;border-radius:8px;font-weight:700;font-size:14px;margin-bottom:6px}
+.bbulk{width:100%;background:#3b82f6;color:#fff;border:none;padding:11px;border-radius:8px;font-weight:700;font-size:14px}
 .dr{padding:7px 0;border-bottom:1px solid #334155;font-size:13px}.dr span{color:#94a3b8;display:block;font-size:11px}
 .emp{text-align:center;color:#64748b;padding:20px 0;font-size:13px}
 </style>
 </head>
 <body>
-<header><h1>🚜 İhale Haritam</h1><button class="btn-add" onclick="openM()">+ İhale Ekle</button></header>
+<header><h1>🚜 İhale Haritam</h1><button class="btn-add" onclick="openM()">+ İhale / Toplu Ekle</button></header>
 <div class="s-bar"><input id="q" placeholder="🔍 İl veya plaka ara..." oninput="render(this.value)"><span class="status-dot" id="syncStatus">● Canlı</span></div>
 <div class="m-wrap"><svg viewBox="0 0 1000 450"><path d="M38,68 L58,42 L105,32 L145,52 L178,76 L162,86 L138,84 L112,98 L78,105 L52,126 L44,118 L62,92 Z M65,134 L105,122 L148,118 L176,94 L215,96 L238,104 L265,86 L325,74 L385,54 L445,48 L505,58 L558,82 L615,92 L685,96 L755,84 L828,62 L885,68 L945,82 L962,125 L942,175 L958,235 L948,295 L885,308 L815,322 L735,335 L655,342 L595,358 L568,388 L548,385 L555,345 L515,342 L465,365 L415,362 L365,345 L315,348 L285,378 L245,355 L185,362 L125,355 L95,325 L108,298 L82,275 L92,248 L74,225 L88,195 L62,175 Z" fill="#172338" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="878" cy="222" rx="22" ry="11" fill="#0b1120" stroke="#334155" stroke-width="1.5"/><ellipse cx="405" cy="228" rx="11" ry="18" fill="#0b1120" stroke="#334155" stroke-width="1.5"/><g id="pins"></g></svg></div>
 <div class="strip" id="strip"></div>
 <div class="drawer" id="drw"><div class="dh"><strong id="sc" style="font-size:17px">İl</strong><button class="c-btn" onclick="closeD()">✕</button></div><select id="df" onchange="rList()"><option value="ALL">Tüm İlçeler</option></select><div class="tabs"><div class="tab active" id="ta" onclick="sTab('active')">Olacak İhaleler</div><div class="tab" id="tp" onclick="sTab('past')">Olmuş İhaleler</div></div><div class="ttabs"><div class="ttab active" id="tALL" onclick="sTyp('ALL')">Tümü</div><div class="ttab" id="tHizmet" onclick="sTyp('Hizmet')">Hizmet Alımı</div><div class="ttab" id="tYapım" onclick="sTyp('Yapım')">Yapım İşi</div></div><div id="list"></div></div>
 <div class="modal" id="dm"><div class="mbox"><div class="dh"><strong>İhale Detayı</strong><button class="c-btn" onclick="closeDet()">✕</button></div><div id="dc"></div></div></div>
-<div class="modal" id="am"><div class="mbox"><div class="dh"><strong>Yeni İhale Ekle</strong><button class="c-btn" onclick="closeM()">✕</button></div><select id="ic"></select><input id="idst" placeholder="İlçe (Örn: Merkez, Sungurlu)"><select id="itp"><option value="Hizmet">Hizmet Alımı (Kiralama)</option><option value="Yapım">Yapım İşi (Hafriyat/Yol)</option></select><select id="ist"><option value="active">Olacak (Aktif)</option><option value="past">Olmuş (Tamamlandı)</option></select><input id="itl" placeholder="İhale Başlığı"><input id="ior" placeholder="Kurum"><textarea id="idc" rows="2" placeholder="Makine & İş Detayı"></textarea><input id="idt" placeholder="İKN & Tarih"><button class="bsave" onclick="save()">Kaydet</button></div></div>
-<script>
+<div class="modal" id="am"><div class="mbox">
+<div class="dh"><strong>Yeni İhale Ekle</strong><button class="c-btn" onclick="closeM()">✕</button></div>
+<div class="tabs"><div class="tab active" id="mSingle" onclick="swMode('single')">Tekli Ekle</div><div class="tab" id="mBulk" onclick="swMode('bulk')">Toplu Yapıştır</div></div>
+<div id="boxSingle">
+<select id="ic"></select><input id="idst" placeholder="İlçe (Örn: Merkez, Sungurlu)"><select id="itp"><option value="Yapım">Yapım İşi (Hafriyat/Altyapı)</option><option value="Hizmet">Hizmet Alımı (Kiralama)</option></select><select id="ist"><option value="active">Olacak (Aktif)</option><option value="past">Olmuş (Tamamlandı)</option></select><input id="itl" placeholder="İhale Başlığı"><input id="ior" placeholder="Kurum"><textarea id="idc" rows="2" placeholder="Makine & İş Detayı"></textarea><input id="idt" placeholder="İKN & Tarih"><button class="bsave" onclick="save()">Haritaya Kaydet</button>
+</div>
+<div id="boxBulk" style="display:none">
+<textarea id="bulkTxt" rows="7" placeholder="Hazır listeyi buraya toplu yapıştırın..."></textarea>
+<button class="bbulk" onclick="saveBulk()">Hepsini Haritaya Aktar</button>
+</div>
+</div></div>
+  <script>
 const C=[
 {p:"01",n:"Adana",x:535,y:325,d:"Seyhan,Ceyhan,Kozan"},{p:"02",n:"Adıyaman",x:675,y:295,d:"Merkez,Kahta"},{p:"03",n:"Afyon",x:265,y:235,d:"Merkez,Sandıklı"},
 {p:"04",n:"Ağrı",x:885,y:165,d:"Merkez,Doğubayazıt"},{p:"05",n:"Amasya",x:545,y:125,d:"Merkez,Merzifon,Suluova"},{p:"06",n:"Ankara",x:385,y:175,d:"Çankaya,Sincan,Polatlı"},
@@ -113,6 +124,7 @@ curC=cn;document.getElementById('sc').textContent=cn+" İhaleleri";
 const co=C.find(c=>c.n===cn),ds=document.getElementById('df');
 ds.innerHTML='<option value="ALL">Tüm İlçeler ('+cn+')</option>';
 if(co&&co.d)co.d.split(',').forEach(d=>ds.innerHTML+=`<option value="${d}">${d}</option>`);
+T.filter(t=>t.city===cn&&t.district).forEach(t=>{if(![...ds.options].some(o=>o.value===t.district))ds.innerHTML+=`<option value="${t.district}">${t.district}</option>`});
 document.getElementById('drw').classList.add('open');rList();
 }
 function closeD(){document.getElementById('drw').classList.remove('open')}
@@ -126,12 +138,18 @@ el.innerHTML=fl.map(t=>{const ri=T.indexOf(t);return `<div class="card" onclick=
 }
 function sDet(i){
 const t=T[i];
-document.getElementById('dc').innerHTML=`<div class="dr"><span>İhale Adı</span><strong>${t.title}</strong></div><div class="dr"><span>Konum</span>${t.city} / ${t.district||'Merkez'}</div><div class="dr"><span>Tür & Durum</span>${t.type} İşi — ${t.status==='active'?'Olacak':'Olmuş'}</div><div class="dr"><span>Kurum</span>${t.org||'-'}</div><div class="dr"><span>Kapsam</span>${t.desc}</div><div class="dr"><span>İKN & Tarih</span>${t.date}</div>`;
+document.getElementById('dc').innerHTML=`<div class="dr"><span>İhale Adı</span><strong>${t.title}</strong></div><div class="dr"><span>Konum</span>${t.city} / ${t.district||'Merkez'}</div><div class="dr"><span>Tür & Durum</span>${t.type} İşi — ${t.status==='active'?'Olacak':'Olmuş'}</div><div class="dr"><span>Kurum</span>${t.org||'-'}</div><div class="dr"><span>Kapsam</span>${t.desc||'-'}</div><div class="dr"><span>İKN & Tarih</span>${t.date}</div>`;
 document.getElementById('dm').classList.add('open');
 }
 function closeDet(){document.getElementById('dm').classList.remove('open')}
 function openM(){document.getElementById('am').classList.add('open')}
 function closeM(){document.getElementById('am').classList.remove('open')}
+function swMode(m){
+document.getElementById('mSingle').classList.toggle('active',m==='single');
+document.getElementById('mBulk').classList.toggle('active',m==='bulk');
+document.getElementById('boxSingle').style.display=m==='single'?'block':'none';
+document.getElementById('boxBulk').style.display=m==='bulk'?'block':'none';
+}
 function save(){
 const city=document.getElementById('ic').value,district=document.getElementById('idst').value.trim()||"Merkez",type=document.getElementById('itp').value,status=document.getElementById('ist').value,title=document.getElementById('itl').value.trim(),org=document.getElementById('ior').value.trim(),desc=document.getElementById('idc').value.trim(),date=document.getElementById('idt').value.trim();
 if(!title){alert("İhale başlığını yazın.");return}
@@ -139,9 +157,9 @@ const item={city,district,type,status,title,org,desc,date};
 T.unshift(item);
 const local=JSON.parse(localStorage.getItem('myTendersV2'))||[];local.unshift(item);
 localStorage.setItem('myTendersV2',JSON.stringify(local));
+document.getElementById('syncStatus').textContent="● "+T.length+" İhale";
 render();closeM();openD(city);['idst','itl','ior','idc','idt'].forEach(x=>document.getElementById(x).value='');
 }
-render();loadLive();
-</script>
-</body>
-</html>
+function saveBulk(){
+const lines=document.getElementById('bulkTxt').value.split('\n').map(x=>x.trim()).filter(Boolean);
+    
