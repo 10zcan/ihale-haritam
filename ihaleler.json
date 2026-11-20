@@ -1,5 +1,27 @@
 [
   {
+    "city": "Adana",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Yatırımlar Dergisi | İhale Dergisi | İhale Haberleri | İhale Sonuçları ...",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Adana Büyükşehir Belediyesi Su ve Kanalizasyon İdaresi (ASKİ) Genel Müdürlüğü 06 Ekim 2026 tarihinde tekliflerini topladığı, &quot;Adana, Kozan İlçesi İçme Suyu Şebekesi Yapım İşlerinin Kontrollük Danışmanlık Hizmeti&quot; ihalesinin mali z...",
+    "date": "20.11.2026",
+    "added": "2026-11-20"
+  },
+  {
+    "city": "Ankara",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Ankara Kanalizasyon İnşaatı Yapım İşi İhalesi | İhale365",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Hanak avcılar mahallesi kanalizasyon inşaatı yapım işi, son teklif 11 Aralık. Ankara Yatırım Koordinasyon Dairesi Başkanlığı, açık ihale....",
+    "date": "20.11.2026",
+    "added": "2026-11-20"
+  },
+  {
     "city": "Osmaniye",
     "district": "Merkez",
     "type": "Yapım",
