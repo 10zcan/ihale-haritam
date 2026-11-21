@@ -1,5 +1,49 @@
 [
   {
+    "city": "Bingöl",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Kamu İhaleleri - YOL, İÇMESUYU, ATIKSU, YAĞMURSUYU, DOĞALGAZ, TELEKOM ...",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "YOL, İÇMESUYU, ATIKSU, YAĞMURSUYU, DOĞALGAZ, TELEKOM VE ELEKTRİK ŞEBEKESİ İNŞAATLARINDAN MÜTEŞEKKİL ALTYAPI YAPIM İŞİ İHALE EDİLECEKTİR Bingöl Organize Sanayi Bölgesi Müteşebbis Heyet Başkanlığından: Sanayi ve Teknoloji Bakanlığının kredi d...",
+    "date": "21.11.2026",
+    "added": "2026-11-21"
+  },
+  {
+    "city": "Yalova",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Tokmak İçme Suyu İletim Hattı Yapım İşi — Yalova ihalesi",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Sıkça sorulan sorular Bu ihale nedir? Tokmak İçme Suyu İletim Hattı Yapım İşi, Altınova Belediye Başkanlığı tarafından Yalova ilinde açılan bir Yapım işidir (İKN 2026/2285379). Kaynak: EKAP....",
+    "date": "21.11.2026",
+    "added": "2026-11-21"
+  },
+  {
+    "city": "Manisa",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Manisa İli Alaşehir İlçesi Muhtelif Mahallerde Kanalizasyon Hattı Yapım İşi",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Manisa İli Alaşehir İlçesi Muhtelif Mahallerde Kanalizasyon Hattı Yapım İşi · Manisa Su ve Kanalizasyon İdaresi · MANİSA. İhale tarihi 08.12.2026. Yaklaşık maliyet, teklifler ve şartnameler....",
+    "date": "21.11.2026",
+    "added": "2026-11-21"
+  },
+  {
+    "city": "Adana",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Kanalizasyon ve yağmursuyu inşaatı yapım işi — Adana İhalesi | eihalebul",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Kanalizasyon ve yağmursuyu inşaatı yapım işi · Adana Su Ve Kanalizasyon İdaresi Genel Müdürlüğü (Aski) ihalesi · Adana · İdare: Adana Su ve Kanalizasyon İdaresi Genel Müdürlüğü (Aski) · İhale tarihi 4 Aralık 2026 · 4734 Sayılı KİK, Açık İha...",
+    "date": "21.11.2026",
+    "added": "2026-11-21"
+  },
+  {
     "city": "Adana",
     "district": "Merkez",
     "type": "Yapım",
