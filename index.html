@@ -146,7 +146,7 @@ el.innerHTML='<div class="emp">İhaleGlobal EKAP kayıtlarından müteahhitler �
 const apiIl=curC==="K.Maraş"?"KAHRAMANMARAŞ":curC==="Afyon"?"AFYONKARAHİSAR":curC.toLocaleUpperCase('tr-TR');
 try{
 if(!firmCache[apiIl]){
-const res=await fetch(`https://ihaleglobal.com{encodeURIComponent(apiIl)}&order=sira.asc`,{headers:{apikey:IG_KEY}});
+const res=await fetch(`https://ihaleglobal.comrest/v1/veri_il_top_firma?il=eq{encodeURIComponent(apiIl)}&order=sira.asc`,{headers:{apikey:IG_KEY}});
 firmCache[apiIl]=await res.json();
 }
 const list=firmCache[apiIl]||[];
