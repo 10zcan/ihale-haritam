@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=3,user-scalable=yes">
-<title>İhale Haritam</title>
+<title>Türkiye İş Makinesi İhale Haritası</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif}
 body{background:#0b1120;color:#f8fafc;height:100vh;display:flex;flex-direction:column;overflow:hidden}
@@ -20,13 +20,13 @@ svg{width:100%;height:auto;max-height:63vh}
 .chip.act{border-color:#f59e0b}
 .chip span{background:#334155;color:#fff;font-size:10px;font-weight:700;padding:2px 6px;border-radius:8px}
 .chip.act span{background:#f59e0b;color:#0f172a}
-.drawer{position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top-left-radius:20px;border-top-right-radius:20px;padding:16px;max-height:82vh;overflow-y:auto;transform:translateY(100%);transition:.25s;z-index:2000;border-top:2px solid #f59e0b}
+.drawer{position:fixed;bottom:0;left:0;right:0;background:#1e293b;border-top-left-radius:20px;border-top-right-radius:20px;padding:16px;max-height:84vh;overflow-y:auto;transform:translateY(100%);transition:.25s;z-index:2000;border-top:2px solid #f59e0b}
 .drawer.open{transform:translateY(0)}
 .dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid #334155}
 .c-btn{background:#334155;color:#fff;border:none;width:30px;height:30px;border-radius:50%;font-size:15px}
 select,input,textarea{width:100%;padding:9px;border-radius:8px;background:#0f172a;color:#fff;border:1px solid #475569;font-size:13px;margin-bottom:8px}
-.tabs,.ttabs{display:flex;gap:6px;margin-bottom:8px}
-.tab,.ttab{flex:1;padding:8px;text-align:center;background:#0f172a;border-radius:8px;font-size:12px;color:#94a3b8;border:1px solid #334155}
+.tabs,.ttabs{display:flex;gap:5px;margin-bottom:8px}
+.tab,.ttab{flex:1;padding:8px 4px;text-align:center;background:#0f172a;border-radius:8px;font-size:11.5px;color:#94a3b8;border:1px solid #334155;cursor:pointer}
 .tab.active{background:#f59e0b;color:#0f172a;font-weight:700}
 .ttab.active{background:#3b82f6;color:#fff;font-weight:700}
 .card{background:#0f172a;border:1px solid #334155;border-radius:12px;padding:12px;margin-bottom:8px}
@@ -34,7 +34,8 @@ select,input,textarea{width:100%;padding:9px;border-radius:8px;background:#0f172
 .bdg{font-size:10px;padding:3px 6px;border-radius:5px;font-weight:700}
 .ba{background:rgba(34,197,94,.2);color:#4ade80}.bp{background:rgba(148,163,184,.2);color:#94a3b8}
 .bh{background:rgba(59,130,246,.2);color:#60a5fa}.by{background:rgba(245,158,11,.2);color:#fbbf24}.bd{background:#1e293b;color:#e2e8f0}
-.card h3{font-size:14px;margin-bottom:4px}.card p{font-size:12px;color:#cbd5e1;margin-bottom:5px}
+.bout{background:rgba(239,68,68,.2);color:#f87171}
+.card h3{font-size:13.5px;margin-bottom:4px;line-height:1.35}.card p{font-size:12px;color:#cbd5e1;margin-bottom:5px}
 .cm{display:flex;justify-content:space-between;font-size:11px;color:#f59e0b;border-top:1px solid #1e293b;padding-top:5px}
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:3000;padding:14px;align-items:center;justify-content:center}
 .modal.open{display:flex}
@@ -42,7 +43,7 @@ select,input,textarea{width:100%;padding:9px;border-radius:8px;background:#0f172
 .bsave{width:100%;background:#22c55e;color:#0f172a;border:none;padding:11px;border-radius:8px;font-weight:700;font-size:14px;margin-bottom:6px}
 .bbulk{width:100%;background:#3b82f6;color:#fff;border:none;padding:11px;border-radius:8px;font-weight:700;font-size:14px}
 .dr{padding:7px 0;border-bottom:1px solid #334155;font-size:13px}.dr span{color:#94a3b8;display:block;font-size:11px}
-.emp{text-align:center;color:#64748b;padding:20px 0;font-size:13px}
+.emp{text-align:center;color:#94a3b8;padding:20px 0;font-size:13px}
 </style>
 </head>
 <body>
@@ -50,51 +51,51 @@ select,input,textarea{width:100%;padding:9px;border-radius:8px;background:#0f172
 <div class="s-bar"><input id="q" placeholder="🔍 İl veya plaka ara..." oninput="render(this.value)"><span class="status-dot" id="syncStatus">● Canlı</span></div>
 <div class="m-wrap"><svg viewBox="0 0 1000 450"><path d="M38,68 L58,42 L105,32 L145,52 L178,76 L162,86 L138,84 L112,98 L78,105 L52,126 L44,118 L62,92 Z M65,134 L105,122 L148,118 L176,94 L215,96 L238,104 L265,86 L325,74 L385,54 L445,48 L505,58 L558,82 L615,92 L685,96 L755,84 L828,62 L885,68 L945,82 L962,125 L942,175 L958,235 L948,295 L885,308 L815,322 L735,335 L655,342 L595,358 L568,388 L548,385 L555,345 L515,342 L465,365 L415,362 L365,345 L315,348 L285,378 L245,355 L185,362 L125,355 L95,325 L108,298 L82,275 L92,248 L74,225 L88,195 L62,175 Z" fill="#172338" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/><ellipse cx="878" cy="222" rx="22" ry="11" fill="#0b1120" stroke="#334155" stroke-width="1.5"/><ellipse cx="405" cy="228" rx="11" ry="18" fill="#0b1120" stroke="#334155" stroke-width="1.5"/><g id="pins"></g></svg></div>
 <div class="strip" id="strip"></div>
-<div class="drawer" id="drw"><div class="dh"><strong id="sc" style="font-size:17px">İl</strong><button class="c-btn" onclick="closeD()">✕</button></div><select id="df" onchange="rList()"><option value="ALL">Tüm İlçeler</option></select><div class="tabs"><div class="tab active" id="ta" onclick="sTab('active')">Olacak İhaleler</div><div class="tab" id="tp" onclick="sTab('past')">Olmuş İhaleler</div></div><div class="ttabs"><div class="ttab active" id="tALL" onclick="sTyp('ALL')">Tümü</div><div class="ttab" id="tHizmet" onclick="sTyp('Hizmet')">Hizmet Alımı</div><div class="ttab" id="tYapım" onclick="sTyp('Yapım')">Yapım İşi</div></div><div id="list"></div></div>
+<div class="drawer" id="drw"><div class="dh"><strong id="sc" style="font-size:17px">İl</strong><button class="c-btn" onclick="closeD()">✕</button></div><select id="df" onchange="rList()"><option value="ALL">Tüm İlçeler</option></select><div class="tabs"><div class="tab active" id="ta" onclick="sTab('active')">Olacak İhaleler</div><div class="tab" id="tp" onclick="sTab('past')">Olmuş İhaleler</div><div class="tab" id="tf" onclick="sTab('firms')">Top Müteahhitler</div></div><div class="ttabs" id="typBar"><div class="ttab active" id="tALL" onclick="sTyp('ALL')">Tümü</div><div class="ttab" id="tHizmet" onclick="sTyp('Hizmet')">Hizmet Alımı</div><div class="ttab" id="tYapım" onclick="sTyp('Yapım')">Yapım İşi</div></div><div id="list"></div></div>
 <div class="modal" id="dm"><div class="mbox"><div class="dh"><strong>İhale Detayı</strong><button class="c-btn" onclick="closeDet()">✕</button></div><div id="dc"></div></div></div>
 <div class="modal" id="am"><div class="mbox">
 <div class="dh"><strong>Yeni İhale Ekle</strong><button class="c-btn" onclick="closeM()">✕</button></div>
 <div class="tabs"><div class="tab active" id="mSingle" onclick="swMode('single')">Tekli Ekle</div><div class="tab" id="mBulk" onclick="swMode('bulk')">Toplu Yapıştır</div></div>
 <div id="boxSingle">
-<select id="ic"></select><input id="idst" placeholder="İlçe (Örn: Merkez, Sungurlu)"><select id="itp"><option value="Yapım">Yapım İşi (Hafriyat/Altyapı)</option><option value="Hizmet">Hizmet Alımı (Kiralama)</option></select><select id="ist"><option value="active">Olacak (Aktif)</option><option value="past">Olmuş (Tamamlandı)</option></select><input id="itl" placeholder="İhale Başlığı"><input id="ior" placeholder="Kurum"><textarea id="idc" rows="2" placeholder="Makine & İş Detayı"></textarea><input id="idt" placeholder="İKN & Tarih"><button class="bsave" onclick="save()">Haritaya Kaydet</button>
+<select id="ic"></select><input id="idst" placeholder="İlçe (Örn: Merkez, Sungurlu)"><select id="itp"><option value="Yapım">Yapım İşi (Hafriyat/Altyapı)</option><option value="Hizmet">Hizmet Alımı (Kiralama)</option></select><select id="ist"><option value="past">Olmuş (Sonuçlandı)</option><option value="active">Olacak (Aktif)</option></select><input id="itl" placeholder="İhale Başlığı"><input id="ior" placeholder="Kurum / Kazanan Firma"><textarea id="idc" rows="2" placeholder="Makine & İş Detayı"></textarea><input id="idt" placeholder="İKN & Tarih"><button class="bsave" onclick="save()">Haritaya Kaydet</button>
 </div>
 <div id="boxBulk" style="display:none">
 <textarea id="bulkTxt" rows="7" placeholder="Hazır listeyi buraya toplu yapıştırın..."></textarea>
 <button class="bbulk" onclick="saveBulk()">Hepsini Haritaya Aktar</button>
 </div>
 </div></div>
-    
 <script>
 const C=[
 {p:"01",n:"Adana",x:535,y:325,d:"Seyhan,Ceyhan,Kozan"},{p:"02",n:"Adıyaman",x:675,y:295,d:"Merkez,Kahta"},{p:"03",n:"Afyon",x:265,y:235,d:"Merkez,Sandıklı"},
-{p:"04",n:"Ağrı",x:885,y:165,d:"Merkez,Doğubayazıt"},{p:"05",n:"Amasya",x:545,y:125,d:"Merkez,Merzifon,Suluova"},{p:"06",n:"Ankara",x:385,y:175,d:"Çankaya,Sincan,Polatlı"},
-{p:"07",n:"Antalya",x:285,y:345,d:"Muratpaşa,Alanya,Manavgat"},{p:"08",n:"Artvin",x:825,y:85,d:"Merkez,Hopa"},{p:"09",n:"Aydın",x:125,y:295,d:"Efeler,Nazilli,Söke"},
+{p:"04",n:"Ağrı",x:885,y:165,d:"Merkez,Doğubayazıt"},{p:"05",n:"Amasya",x:545,y:125,d:"Merkez,Merzifon,Suluova"},{p:"06",n:"Ankara",x:385,y:175,d:"Çankaya,Sincan,Polatlı,Gölbaşı,Yenimahalle,Etimesgut"},
+{p:"07",n:"Antalya",x:285,y:345,d:"Muratpaşa,Alanya,Manavgat"},{p:"08",n:"Artvin",x:825,y:85,d:"Merkez,Hopa,Arhavi"},{p:"09",n:"Aydın",x:125,y:295,d:"Efeler,Nazilli,Söke,Germencik"},
 {p:"10",n:"Balıkesir",x:135,y:175,d:"Altıeylül,Bandırma,Edremit"},{p:"11",n:"Bilecik",x:235,y:145,d:"Merkez,Bozüyük"},{p:"12",n:"Bingöl",x:775,y:215,d:"Merkez,Genç"},
-{p:"13",n:"Bitlis",x:845,y:235,d:"Merkez,Tatvan"},{p:"14",n:"Bolu",x:315,y:125,d:"Merkez,Gerede"},{p:"15",n:"Burdur",x:235,y:315,d:"Merkez,Bucak"},
-{p:"16",n:"Bursa",x:195,y:145,d:"Osmangazi,Nilüfer,İnegöl"},{p:"17",n:"Çanakkale",x:75,y:155,d:"Merkez,Biga"},{p:"18",n:"Çankırı",x:425,y:125,d:"Merkez,Çerkeş"},
+{p:"13",n:"Bitlis",x:845,y:235,d:"Merkez,Tatvan,Hizan"},{p:"14",n:"Bolu",x:315,y:125,d:"Merkez,Gerede"},{p:"15",n:"Burdur",x:235,y:315,d:"Merkez,Bucak"},
+{p:"16",n:"Bursa",x:195,y:145,d:"Osmangazi,Nilüfer,İnegöl,Mustafakemalpaşa"},{p:"17",n:"Çanakkale",x:75,y:155,d:"Merkez,Biga"},{p:"18",n:"Çankırı",x:425,y:125,d:"Merkez,Çerkeş"},
 {p:"19",n:"Çorum",x:485,y:130,d:"Merkez,Sungurlu,Osmancık,Alaca,İskilip"},{p:"20",n:"Denizli",x:185,y:295,d:"Pamukkale,Çivril"},{p:"21",n:"Diyarbakır",x:755,y:265,d:"Bağlar,Ergani"},
 {p:"22",n:"Edirne",x:55,y:65,d:"Merkez,Keşan"},{p:"23",n:"Elazığ",x:715,y:235,d:"Merkez,Kovancılar"},{p:"24",n:"Erzincan",x:715,y:175,d:"Merkez,Tercan"},
-{p:"25",n:"Erzurum",x:815,y:145,d:"Yakutiye,Horasan"},{p:"26",n:"Eskişehir",x:275,y:180,d:"Odunpazarı,Sivrihisar"},{p:"27",n:"Gaziantep",x:615,y:335,d:"Şahinbey,Nizip"},
-{p:"28",n:"Giresun",x:665,y:105,d:"Merkez,Bulancak"},{p:"29",n:"Gümüşhane",x:715,y:125,d:"Merkez,Kelkit"},{p:"30",n:"Hakkari",x:935,y:285,d:"Merkez,Yüksekova"},
+{p:"25",n:"Erzurum",x:815,y:145,d:"Yakutiye,Horasan"},{p:"26",n:"Eskişehir",x:275,y:180,d:"Odunpazarı,Sivrihisar,Seyitgazi"},{p:"27",n:"Gaziantep",x:615,y:335,d:"Şahinbey,Nizip"},
+{p:"28",n:"Giresun",x:665,y:105,d:"Merkez,Bulancak,Dereli,Espiye"},{p:"29",n:"Gümüşhane",x:715,y:125,d:"Merkez,Kelkit"},{p:"30",n:"Hakkari",x:935,y:285,d:"Merkez,Yüksekova,Çukurca"},
 {p:"31",n:"Hatay",x:555,y:375,d:"Antakya,İskenderun"},{p:"32",n:"Isparta",x:265,y:295,d:"Merkez,Yalvaç"},{p:"33",n:"Mersin",x:465,y:345,d:"Yenişehir,Tarsus"},
 {p:"34",n:"İstanbul",x:185,y:85,d:"Tuzla,Pendik,Başakşehir,Silivri"},{p:"35",n:"İzmir",x:95,y:245,d:"Bornova,Torbalı,Menemen"},{p:"36",n:"Kars",x:885,y:105,d:"Merkez,Sarıkamış"},
 {p:"37",n:"Kastamonu",x:435,y:80,d:"Merkez,Tosya,Taşköprü"},{p:"38",n:"Kayseri",x:535,y:235,d:"Melikgazi,Develi"},{p:"39",n:"Kırklareli",x:95,y:55,d:"Merkez,Lüleburgaz"},
-{p:"40",n:"Kırşehir",x:445,y:205,d:"Merkez,Kaman"},{p:"41",n:"Kocaeli",x:235,y:100,d:"İzmit,Gebze"},{p:"42",n:"Konya",x:375,y:285,d:"Selçuklu,Ereğli"},
+{p:"40",n:"Kırşehir",x:445,y:205,d:"Merkez,Kaman,Mucur"},{p:"41",n:"Kocaeli",x:235,y:100,d:"İzmit,Gebze,Başiskele"},{p:"42",n:"Konya",x:375,y:285,d:"Selçuklu,Ereğli"},
 {p:"43",n:"Kütahya",x:205,y:195,d:"Merkez,Tavşanlı"},{p:"44",n:"Malatya",x:655,y:245,d:"Battalgazi,Yeşilyurt"},{p:"45",n:"Manisa",x:135,y:235,d:"Yunusemre,Akhisar"},
 {p:"46",n:"K.Maraş",x:595,y:285,d:"Onikişubat,Elbistan"},{p:"47",n:"Mardin",x:785,y:315,d:"Artuklu,Kızıltepe"},{p:"48",n:"Muğla",x:145,y:345,d:"Menteşe,Bodrum,Fethiye"},
 {p:"49",n:"Muş",x:825,y:205,d:"Merkez,Bulanık"},{p:"50",n:"Nevşehir",x:475,y:230,d:"Merkez,Ürgüp"},{p:"51",n:"Niğde",x:475,y:275,d:"Merkez,Bor"},
 {p:"52",n:"Ordu",x:615,y:100,d:"Altınordu,Ünye,Fatsa"},{p:"53",n:"Rize",x:775,y:90,d:"Merkez,Çayeli"},{p:"54",n:"Sakarya",x:265,y:105,d:"Adapazarı,Hendek"},
 {p:"55",n:"Samsun",x:545,y:90,d:"İlkadım,Atakum,Bafra,Çarşamba,Vezirköprü"},{p:"56",n:"Siirt",x:845,y:275,d:"Merkez,Kurtalan"},{p:"57",n:"Sinop",x:495,y:65,d:"Merkez,Boyabat"},
 {p:"58",n:"Sivas",x:605,y:185,d:"Merkez,Şarkışla,Suşehri"},{p:"59",n:"Tekirdağ",x:115,y:85,d:"Süleymanpaşa,Çorlu"},{p:"60",n:"Tokat",x:585,y:135,d:"Merkez,Erbaa,Turhal,Niksar"},
-{p:"61",n:"Trabzon",x:725,y:95,d:"Ortahisar,Akçaabat"},{p:"62",n:"Tunceli",x:725,y:205,d:"Merkez,Pertek"},{p:"63",n:"Şanlıurfa",x:695,y:335,d:"Haliliye,Siverek"},
+{p:"61",n:"Trabzon",x:725,y:95,d:"Ortahisar,Akçaabat,Maçka"},{p:"62",n:"Tunceli",x:725,y:205,d:"Merkez,Pertek"},{p:"63",n:"Şanlıurfa",x:695,y:335,d:"Haliliye,Siverek"},
 {p:"64",n:"Uşak",x:195,y:245,d:"Merkez,Banaz"},{p:"65",n:"Van",x:905,y:225,d:"İpekyolu,Erciş"},{p:"66",n:"Yozgat",x:495,y:175,d:"Merkez,Sorgun,Yerköy"},
 {p:"67",n:"Zonguldak",x:335,y:85,d:"Merkez,Ereğli"},{p:"68",n:"Aksaray",x:435,y:250,d:"Merkez,Ortaköy"},{p:"69",n:"Bayburt",x:755,y:125,d:"Merkez"},
-{p:"70",n:"Karaman",x:405,y:335,d:"Merkez,Ermenek"},{p:"71",n:"Kırıkkale",x:425,y:165,d:"Merkez,Yahşihan"},{p:"72",n:"Batman",x:805,y:275,d:"Merkez,Kozluk"},
-{p:"73",n:"Şırnak",x:875,y:295,d:"Merkez,Cizre"},{p:"74",n:"Bartın",x:375,y:75,d:"Merkez,Amasra"},{p:"75",n:"Ardahan",x:865,y:75,d:"Merkez"},
+{p:"70",n:"Karaman",x:405,y:335,d:"Merkez,Ermenek"},{p:"71",n:"Kırıkkale",x:425,y:165,d:"Merkez,Yahşihan"},{p:"72",n:"Batman",x:805,y:275,d:"Merkez,Kozluk,Gercüş"},
+{p:"73",n:"Şırnak",x:875,y:295,d:"Merkez,Cizre,Silopi,Uludere"},{p:"74",n:"Bartın",x:375,y:75,d:"Merkez,Amasra"},{p:"75",n:"Ardahan",x:865,y:75,d:"Merkez"},
 {p:"76",n:"Iğdır",x:935,y:135,d:"Merkez"},{p:"77",n:"Yalova",x:190,y:115,d:"Merkez"},{p:"78",n:"Karabük",x:375,y:100,d:"Merkez,Safranbolu"},
 {p:"79",n:"Kilis",x:595,y:355,d:"Merkez"},{p:"80",n:"Osmaniye",x:565,y:325,d:"Merkez,Kadirli"},{p:"81",n:"Düzce",x:290,y:105,d:"Merkez,Akçakoca"}
 ];
-    let T=JSON.parse(localStorage.getItem('myTendersV2'))||[],curC="",curTab="active",curType="ALL";
+const IG_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzg0MzA3MTU4LCJleHAiOjE5NDE5ODcxNTh9.CjNKulvirotDD_y2oO2QKgo0kbqYvL0jUSV1RiDMoso";
+let T=JSON.parse(localStorage.getItem('myTendersV2'))||[],curC="",curTab="active",curType="ALL",firmCache={};
 const cs=document.getElementById('ic');
 C.slice().sort((a,b)=>a.n.localeCompare(b.n,'tr')).forEach(c=>{const o=document.createElement('option');o.value=c.n;o.textContent=c.p+" - "+c.n;cs.appendChild(o)});
 
@@ -115,13 +116,13 @@ render();
 function render(ft=""){
 const ly=document.getElementById('pins'),st=document.getElementById('strip');let svg="",str="";
 C.forEach(c=>{
-const ac=T.filter(t=>t.city===c.n&&t.status==='active').length,isA=ac>0,r=isA?12:8.5;
+const ac=T.filter(t=>t.city===c.n).length,isA=ac>0,r=isA?12:8.5;
 svg+=`<g onclick="openD('${c.n}')" style="cursor:pointer"><circle cx="${c.x}" cy="${c.y}" r="${r}" fill="${isA?'#f59e0b':'#1e293b'}" stroke="${isA?'#fff':'#64748b'}" stroke-width="${isA?2.5:1.5}"/><text x="${c.x}" y="${c.y+3.2}" font-size="8.5" font-weight="bold" fill="${isA?'#0f172a':'#94a3b8'}" text-anchor="middle">${isA?ac:c.p}</text><text x="${c.x}" y="${c.y+r+8.5}" font-size="7.5" font-weight="600" fill="${isA?'#fbbf24':'#94a3b8'}" text-anchor="middle">${c.n}</text></g>`;
 if(!ft||c.n.toLowerCase().includes(ft.toLowerCase())||c.p.includes(ft)){str+=`<div class="chip ${isA?'act':''}" onclick="openD('${c.n}')">${c.p} ${c.n} <span>${ac}</span></div>`}
 });ly.innerHTML=svg;st.innerHTML=str;
 }
 function openD(cn){
-curC=cn;document.getElementById('sc').textContent=cn+" İhaleleri";
+curC=cn;document.getElementById('sc').textContent=cn+" İhale & Piyasa";
 const co=C.find(c=>c.n===cn),ds=document.getElementById('df');
 ds.innerHTML='<option value="ALL">Tüm İlçeler ('+cn+')</option>';
 if(co&&co.d)co.d.split(',').forEach(d=>ds.innerHTML+=`<option value="${d}">${d}</option>`);
@@ -129,8 +130,34 @@ T.filter(t=>t.city===cn&&t.district).forEach(t=>{if(![...ds.options].some(o=>o.v
 document.getElementById('drw').classList.add('open');rList();
 }
 function closeD(){document.getElementById('drw').classList.remove('open')}
-function sTab(t){curTab=t;document.getElementById('ta').classList.toggle('active',t==='active');document.getElementById('tp').classList.toggle('active',t==='past');rList()}
+function sTab(t){
+curTab=t;
+document.getElementById('ta').classList.toggle('active',t==='active');
+document.getElementById('tp').classList.toggle('active',t==='past');
+document.getElementById('tf').classList.toggle('active',t==='firms');
+document.getElementById('typBar').style.display=t==='firms'?'none':'flex';
+document.getElementById('df').style.display=t==='firms'?'none':'block';
+if(t==='firms')loadFirms();else rList();
+}
 function sTyp(t){curType=t;['ALL','Hizmet','Yapım'].forEach(x=>document.getElementById('t'+x).classList.toggle('active',x===t));rList()}
+async function loadFirms(){
+const el=document.getElementById('list');
+el.innerHTML='<div class="emp">İhaleGlobal EKAP kayıtlarından müteahhitler çekiliyor...</div>';
+const apiIl=curC==="K.Maraş"?"KAHRAMANMARAŞ":curC==="Afyon"?"AFYONKARAHİSAR":curC.toLocaleUpperCase('tr-TR');
+try{
+if(!firmCache[apiIl]){
+const res=await fetch(`https://ihaleglobal.com{encodeURIComponent(apiIl)}&order=sira.asc`,{headers:{apikey:IG_KEY}});
+firmCache[apiIl]=await res.json();
+}
+const list=firmCache[apiIl]||[];
+if(!list.length){el.innerHTML='<div class="emp">Bu il için firma kaydı bulunamadı.</div>';return}
+el.innerHTML=list.map(f=>{
+const isOut=f.firma_il&&f.firma_il.toLocaleUpperCase('tr-TR')!==apiIl;
+const mBedel=Math.round((f.bedel||0)/1000000);
+return `<div class="card"><div class="bdgs"><span class="bdg by">#${f.sira} YÜKLENİCİ</span><span class="bdg ${isOut?'bout':'ba'}">${isOut?'📍 İl Dışı: '+f.firma_il:'✓ Yerel: '+f.firma_il}</span></div><h3>${f.firma}</h3><p>${f.sozlesme_sayisi} Sözleşme · Toplam Hacim: ~${mBedel} Milyon TL</p><div class="cm"><span>Kaynak: İhaleGlobal EKAP Özeti</span><span>Taşeronluk Hedefi</span></div></div>`;
+}).join('');
+}catch(e){el.innerHTML='<div class="emp">Bağlantı hatası oluştu.</div>';}
+}
 function rList(){
 const el=document.getElementById('list'),sd=document.getElementById('df').value;
 const fl=T.filter(t=>t.city===curC&&t.status===curTab&&(sd==="ALL"||(t.district&&t.district.toLowerCase()===sd.toLowerCase()))&&(curType==="ALL"||t.type===curType));
@@ -139,53 +166,4 @@ el.innerHTML=fl.map(t=>{const ri=T.indexOf(t);return `<div class="card" onclick=
 }
 function sDet(i){
 const t=T[i];
-document.getElementById('dc').innerHTML=`<div class="dr"><span>İhale Adı</span><strong>${t.title}</strong></div><div class="dr"><span>Konum</span>${t.city} / ${t.district||'Merkez'}</div><div class="dr"><span>Tür & Durum</span>${t.type} İşi — ${t.status==='active'?'Olacak':'Olmuş'}</div><div class="dr"><span>Kurum</span>${t.org||'-'}</div><div class="dr"><span>Kapsam</span>${t.desc||'-'}</div><div class="dr"><span>İKN & Tarih</span>${t.date}</div>`;
-document.getElementById('dm').classList.add('open');
-}
-function closeDet(){document.getElementById('dm').classList.remove('open')}
-function openM(){document.getElementById('am').classList.add('open')}
-function closeM(){document.getElementById('am').classList.remove('open')}
-function swMode(m){
-document.getElementById('mSingle').classList.toggle('active',m==='single');
-document.getElementById('mBulk').classList.toggle('active',m==='bulk');
-document.getElementById('boxSingle').style.display=m==='single'?'block':'none';
-document.getElementById('boxBulk').style.display=m==='bulk'?'block':'none';
-}
-function save(){
-const city=document.getElementById('ic').value,district=document.getElementById('idst').value.trim()||"Merkez",type=document.getElementById('itp').value,status=document.getElementById('ist').value,title=document.getElementById('itl').value.trim(),org=document.getElementById('ior').value.trim(),desc=document.getElementById('idc').value.trim(),date=document.getElementById('idt').value.trim();
-if(!title){alert("İhale başlığını yazın.");return}
-const item={city,district,type,status,title,org,desc,date};
-T.unshift(item);
-const local=JSON.parse(localStorage.getItem('myTendersV2'))||[];local.unshift(item);
-localStorage.setItem('myTendersV2',JSON.stringify(local));
-document.getElementById('syncStatus').textContent="● "+T.length+" İhale";
-render();closeM();openD(city);['idst','itl','ior','idc','idt'].forEach(x=>document.getElementById(x).value='');
-}
-function saveBulk(){
-const lines=document.getElementById('bulkTxt').value.split('\n').map(x=>x.trim()).filter(Boolean);
-if(!lines.length){alert("Lütfen listeyi yapıştırın.");return}
-const local=JSON.parse(localStorage.getItem('myTendersV2'))||[];
-let added=0;
-lines.forEach(line=>{
-const parts=line.split('|').map(x=>x.trim());
-const city=parts.shift();
-const district=parts.shift()||"Merkez";
-const type=parts.shift()||"Yapım";
-const status=parts.shift()||"past";
-const title=parts.shift();
-const org=parts.shift()||"EKAP";
-const date=parts.shift()||"";
-if(city && title){
-const item={city,district,type,status,title,org,desc:title,date};
-T.unshift(item);local.unshift(item);added++;
-}
-});
-localStorage.setItem('myTendersV2',JSON.stringify(local));
-document.getElementById('syncStatus').textContent="● "+T.length+" İhale";
-document.getElementById('bulkTxt').value='';
-render();closeM();alert(added+" adet ihale haritaya eklendi!");
-}
-render();loadLive();
-</script>
-</body>
-</html>
+    
