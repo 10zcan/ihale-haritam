@@ -1,5 +1,16 @@
 [
   {
+    "city": "Isparta",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "İçme suyu İnşaatı ihaleye çıkıyor - Bomba 32 - ISPARTA HABER, Isparta ...",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "İçme suyu İnşaatı ihaleye çıkıyor Yalvaç&#x27;ta yaklaşık 40 yıl önce yapılan ve ekonomik ömrünü tamamladığı için zaman zaman içme suyu sıkıntısı oluşmasına yol açan içme suyu altyapısının yenilenmesi için 6 Mayıs 2026&#x27;da ihaleye çıkıl...",
+    "date": "22.11.2026",
+    "added": "2026-11-22"
+  },
+  {
     "city": "Bingöl",
     "district": "Merkez",
     "type": "Yapım",
