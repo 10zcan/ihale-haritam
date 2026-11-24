@@ -1,5 +1,16 @@
 [
   {
+    "city": "Manisa",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Kanalizasyon işleri yaptırılacaktır",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Manisa İli Alaşehir İlçesi Muhtelif Mahallerde Kanalizasyon Hattı Yapım İşi yapım işi 4734 sayılı Kamu İhale Kanununun 19 uncu maddesine göre açık ihale usulü ile ihale edilecek olup, teklifler sadece elektronik ortamda EKAP üzerinden alına...",
+    "date": "24.11.2026",
+    "added": "2026-11-24"
+  },
+  {
     "city": "Isparta",
     "district": "Merkez",
     "type": "Yapım",
