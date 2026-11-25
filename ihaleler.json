@@ -1,5 +1,16 @@
 [
   {
+    "city": "Batman",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "İhale Portalı",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "BATMAN BÖLGE KOORDİNATÖRLÜĞÜ AP-2 PARK SAHA PERSONEL TAŞIMA HİZMET ALIMI...",
+    "date": "25.11.2026",
+    "added": "2026-11-25"
+  },
+  {
     "city": "Manisa",
     "district": "Merkez",
     "type": "Yapım",
