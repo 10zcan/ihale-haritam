@@ -1,5 +1,27 @@
 [
   {
+    "city": "Kocaeli",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Kandıra Doğu Bölgesi Doğalgaz İşleri Kapsamında Altyapı Hatları ...",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Kandıra Doğu Bölgesi Doğalgaz İşleri Kapsamında Altyapı Hatları İnşaatı ihalesi. İdare: İsu- Kocaeli Su Ve Kanalizasyon İdaresi Genel Müdürlüğü. İhale tarihi…...",
+    "date": "27.11.2026",
+    "added": "2026-11-27"
+  },
+  {
+    "city": "Trabzon",
+    "district": "Merkez",
+    "type": "Yapım",
+    "status": "active",
+    "title": "Doğankent Belediyesi Kısmi Kanalizasyon ve Terfi Merkezi ... - Diyosis",
+    "org": "EKAP / Kamu İhale Duyurusu",
+    "desc": "Doğankent Belediyesi Kısmi Kanalizasyon ve Terfi Merkezi Yapım İşi · İdare Adı Tespiti Talep Edin · Trabzon. İhale tarihi 09.11.2026. Yaklaşık maliyet, teklifler ve şartnameler....",
+    "date": "27.11.2026",
+    "added": "2026-11-27"
+  },
+  {
     "city": "Batman",
     "district": "Merkez",
     "type": "Yapım",
